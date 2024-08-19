@@ -2,7 +2,7 @@
   "name": "microboard",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://raiyin.github.io/mbtest",
+  "homepage": "https://raiyin.github.io/mbtest/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
