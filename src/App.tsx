@@ -1,32 +1,32 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from './App.module.css';
-import { Point } from './types/Point';
+// import { Point } from './types/Point';
 
 function App() {
     const drawCanvasRef = useRef<HTMLCanvasElement>(null);
-    const [width, setWidth] = useState(800);
-    const [height, setHeight] = useState(400);
-    const [heroRadius, setHeroRadius] = useState(50);
-    const [fireRadius, setFireRadius] = useState(5);
-    const [minY, setMinY] = useState(50);
-    const [maxY, setMaxY] = useState(350);
+    const [width] = useState(800);
+    const [height] = useState(400);
+    const [heroRadius] = useState(50);
+    // const [fireRadius] = useState(5);
+    const [minY] = useState(50);
+    const [maxY] = useState(350);
 
-    const [firstX, setFirstX] = useState(50);
-    const [firstY, setFirstY] = useState(minY);
-    const [firstColor, setFirstColor] = useState("red");
+    const [firstX] = useState(50);
+    // const [firstY, setFirstY] = useState(minY);
+    // const [firstColor, setFirstColor] = useState("red");
     const [firstSpeed, setFirstSpeed] = useState(3);
     const [firstFreq, setFirstFreq] = useState(50);
-    const [firstScore, setFirstScore] = useState(0);
-    const [firstBalls, setFirstBalls] = useState<Point[]>([]);
-    const [firstDir, setFirstDir] = useState(1);
+    const [firstScore] = useState(0);
+    // const [firstBalls, setFirstBalls] = useState<Point[]>([]);
+    // const [firstDir, setFirstDir] = useState(1);
 
-    const [secondX, setSecondX] = useState(750);
+    const [secondX] = useState(750);
     const [secondY, setSecondY] = useState(minY);
-    const [secondColor, setSecondColor] = useState("red");
+    // const [secondColor, setSecondColor] = useState("red");
     const [secondSpeed, setSecondSpeed] = useState(3);
     const [secondFreq, setSecondFreq] = useState(50);
-    const [secondScore, setSecondScore] = useState(0);
-    const [secondBalls, setSecondBalls] = useState<Point[]>([]);
+    const [secondScore] = useState(0);
+    // const [secondBalls, setSecondBalls] = useState<Point[]>([]);
     const [secondDir, setSecondDir] = useState(secondSpeed);
 
 
@@ -102,50 +102,9 @@ function App() {
         ctx.stroke();
     };
 
-    const drawFireball = (x: number, y: number, isFirst: boolean) => {
-        const ctx = drawCanvasRef.current?.getContext('2d');
-        if (ctx === null || ctx === undefined) {
-            return;
-        }
 
-        const color = isFirst ? firstColor : secondColor;
 
-        ctx.beginPath();
-        ctx.arc(x, y, fireRadius, 0, 2 * Math.PI);
-        ctx.fillStyle = color;
-        ctx.fill();
-        ctx.stroke();
-    };
 
-    const changeColor = (isFirst: boolean) => {
-        if (isFirst) {
-            if (firstColor === 'red') {
-                setFirstColor('yellow');
-            }
-            else {
-                setFirstColor('red');
-            }
-        }
-        else {
-            if (secondColor === 'red') {
-                setSecondColor('yellow');
-            }
-            else {
-                setSecondColor('red');
-            }
-        }
-    };
-
-    const distance = (x1: number, y1: number, x2: number, y2: number) => {
-        const x = Math.abs(x1 - x2);
-        const y = Math.abs(y1 - y2);
-        const dist = Math.sqrt(x * x + y * y);
-        return dist;
-    };
-
-    const clickHandler = () => {
-        setCounter(counter + 1);
-    };
 
     const changeSpeedHandler = (isFirst: boolean, event: ChangeEvent<HTMLInputElement>) => {
         if (isFirst)
